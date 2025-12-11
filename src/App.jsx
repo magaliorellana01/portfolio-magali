@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { 
   DarkMode, LightMode, AutoAwesome, School,
-  Close, OpenInNew, ArrowDownward, WorkspacePremium, Class
+  Close, OpenInNew, ArrowDownward, WorkspacePremium, Class, Download
 } from '@mui/icons-material';
 
 // --- ÍCONOS REALES ---
@@ -48,10 +48,10 @@ const portfolioData = {
   ],
   certifications: [
     {
-      title: "Desarrollo Web Full Stack",
+      title: "Desarrollo Web",
       place: "Coderhouse",
       status: "Certificado",
-      year: "2024",
+      year: "2023",
       icon: <WorkspacePremium fontSize="medium" />,
       image: "/certificado-coder.png" 
     },
@@ -64,7 +64,7 @@ const portfolioData = {
       image: "/curso-loopian.png"
     },
     {
-      title: "Especialización en React",
+      title: "Curso de React",
       place: "Talento Tech",
       status: "En curso / Certif. en trámite",
       year: "2025",
@@ -218,15 +218,20 @@ export default function Portfolio() {
           {portfolioData.title}
         </Typography>
         
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
-           <Button variant="contained" size="large" startIcon={<FaLinkedin />} href={portfolioData.social.linkedin} target="_blank" sx={{ borderRadius: '50px', px: 4, py: 1.2 }}>
-             LinkedIn
-           </Button>
-           <Button variant="outlined" size="large" startIcon={<FaGithub />} href={portfolioData.social.github} target="_blank" sx={{ borderRadius: '50px', px: 4, py: 1.2, borderWidth: 2 }}>
-             GitHub
-           </Button>
-           <Button variant="outlined" size="large" startIcon={<ArrowDownward />} href="#proyectos" sx={{ borderRadius: '50px', px: 4, py: 1.2, borderWidth: 2 }}>
-             Proyectos
+        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+           <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
+             <Button variant="contained" size="large" startIcon={<FaLinkedin />} href={portfolioData.social.linkedin} target="_blank" sx={{ borderRadius: '50px', px: 4, py: 1.2 }}>
+               LinkedIn
+             </Button>
+             <Button variant="outlined" size="large" startIcon={<FaGithub />} href={portfolioData.social.github} target="_blank" sx={{ borderRadius: '50px', px: 4, py: 1.2, borderWidth: 2 }}>
+               GitHub
+             </Button>
+             <Button variant="outlined" size="large" startIcon={<ArrowDownward />} href="#proyectos" sx={{ borderRadius: '50px', px: 4, py: 1.2, borderWidth: 2 }}>
+               Proyectos
+             </Button>
+           </Box>
+           <Button variant="outlined" size="large" startIcon={<Download />} href="/CvMagalíOrellana.pdf" download sx={{ borderRadius: '50px', px: 4, py: 1.2, borderWidth: 2, mt: 2 }}>
+             Descargá mi CV
            </Button>
         </Box>
       </Box>
