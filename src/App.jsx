@@ -243,15 +243,15 @@ export default function Portfolio() {
             {portfolioData.skills.map((skill, index) => (
               <Grid item key={index}>
                 <Paper elevation={0} sx={{ 
-                  py: 1.5, px: 3, 
+                  py: 1, px: 2.5, 
                   borderRadius: 50, 
-                  display: 'flex', alignItems: 'center', gap: 1,
+                  display: 'flex', alignItems: 'center', gap: 0.8,
                   border: `1px solid ${theme.palette.divider}`,
                   bgcolor: theme.palette.background.paper,
                   transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', borderColor: theme.palette.primary.main }
                 }}>
-                  <Box sx={{ color: 'primary.main', display: 'flex' }}>{skill.icon}</Box>
-                  <Typography fontWeight="bold">{skill.name}</Typography>
+                  <Box sx={{ color: 'primary.main', display: 'flex', fontSize: '1.3em' }}>{skill.icon}</Box>
+                  <Typography fontWeight="bold" sx={{ fontSize: '0.95rem' }}>{skill.name}</Typography>
                 </Paper>
               </Grid>
             ))}
@@ -268,7 +268,7 @@ export default function Portfolio() {
                 <Grid item key={index} xs={12} md={4}>
                   <Card sx={{ 
                     width: '100%', 
-                    maxWidth: '360px', 
+                    maxWidth: '280px', 
                     height: '100%',    
                     display: 'flex', 
                     flexDirection: 'column',
@@ -282,7 +282,7 @@ export default function Portfolio() {
                     <Box>
                       <CardMedia
                           component="img"
-                          height="220" 
+                          height="160" 
                           image={project.cover}
                           alt={project.title}
                           sx={{ cursor: 'pointer', objectFit: 'cover' }}
@@ -318,7 +318,7 @@ export default function Portfolio() {
             
             {/* TÍTULO UNIVERSITARIO */}
             <Paper sx={{ 
-              p: 4, borderRadius: 6, textAlign: 'center', width: '100%', maxWidth: '750px', mx: 'auto',
+              p: 2.5, borderRadius: 6, textAlign: 'center', width: '100%', maxWidth: '550px', mx: 'auto',
               bgcolor: mode === 'light' ? '#f3e5f5' : '#2c1a35', 
               border: `1px solid ${theme.palette.primary.main}`, 
               transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.01)' }
