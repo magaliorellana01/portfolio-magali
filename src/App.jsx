@@ -56,6 +56,14 @@ const portfolioData = {
       image: "/certificado-coder.png" 
     },
     {
+      title: "Diseño Gráfico",
+      place: "Loopian",
+      status: "Certificado",
+      year: "2022",
+      icon: <WorkspacePremium fontSize="medium" />,
+      image: "/curso-loopian.png"
+    },
+    {
       title: "Especialización en React",
       place: "Talento Tech",
       status: "En curso / Certif. en trámite",
@@ -206,7 +214,7 @@ export default function Portfolio() {
         <Typography variant="body1" color="primary.main" gutterBottom sx={{ letterSpacing: 2, fontWeight: 'bold', fontSize: '1.1rem' }}>
           HOLA, SOY MAGALÍ
         </Typography>
-        <Typography variant="h1" sx={{ mb: 4, maxWidth: '900px', lineHeight: 1.1, px: 2 }}>
+        <Typography variant="h1" sx={{ mb: 3, maxWidth: '900px', lineHeight: 1.1, px: 2 }}>
           {portfolioData.title}
         </Typography>
         
@@ -224,7 +232,7 @@ export default function Portfolio() {
       </Box>
 
       {/* CONTENEDOR PRINCIPAL */}
-      <Container maxWidth="xl" sx={{ 
+      <Container maxWidth="lg" sx={{ 
         display: 'flex', flexDirection: 'column', alignItems: 'center', py: 8
       }}>
 
@@ -239,7 +247,7 @@ export default function Portfolio() {
         {/* 3. SKILLS */}
         <Box sx={{ textAlign: 'center', maxWidth: '1000px', width: '100%', mb: 15 }}>
           <Typography variant="h3" gutterBottom sx={{ mb: 6 }}>Skills</Typography>
-          <Grid container spacing={2} justifyContent="center">
+          <Grid container spacing={3} justifyContent="center">
             {portfolioData.skills.map((skill, index) => (
               <Grid item key={index}>
                 <Paper elevation={0} sx={{ 
@@ -263,32 +271,32 @@ export default function Portfolio() {
           <Typography variant="h3" sx={{ mb: 8, textAlign: 'center' }}>Proyectos</Typography>
           
           <Box sx={{ maxWidth: '1200px', mx: 'auto', width: '100%' }}>
-            <Grid container spacing={4} justifyContent="center" alignItems="stretch">
+            <Grid container spacing={5} justifyContent="center" alignItems="stretch">
               {portfolioData.projects.map((project, index) => (
-                <Grid item key={index} xs={12} md={4}>
+                <Grid item key={index} xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center' }}>
                   <Card sx={{ 
                     width: '100%', 
-                    maxWidth: '280px', 
+                    maxWidth: 340,
                     height: '100%',    
                     display: 'flex', 
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                    transition: 'transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out',
                     '&:hover': {
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+                      transform: 'scale(1.03)',
+                      boxShadow: '0 16px 32px rgba(0,0,0,0.32)'
                     }
                   }}>
                     <Box>
                       <CardMedia
                           component="img"
-                          height="160" 
+                          height="130" 
                           image={project.cover}
                           alt={project.title}
                           sx={{ cursor: 'pointer', objectFit: 'cover' }}
                           onClick={() => handleOpenProject(project)}
                       />
-                      <CardContent sx={{ pb: 1 }}>
+                      <CardContent sx={{ pb: 3 }}>
                           <Typography variant="h5" gutterBottom>{project.title}</Typography>
                           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>{project.desc}</Typography>
                           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
@@ -296,11 +304,15 @@ export default function Portfolio() {
                               <Chip key={tag} label={tag} size="small" variant="outlined" color="primary" sx={{ borderRadius: 1 }} />
                             ))}
                           </Box>
+
+
+
+
                       </CardContent>
                     </Box>
                     <CardActions sx={{ justifyContent: 'center', pb: 3, mt: 1 }}>
-                      <Button variant="contained" size="large" onClick={() => handleOpenProject(project)} sx={{ borderRadius: '50px', px: 4 }}>
-                        Ver Galería
+                      <Button variant="contained" size="medium" onClick={() => handleOpenProject(project)} sx={{ borderRadius: '50px', px: 3 }}>
+                        Ver detalles
                       </Button>
                     </CardActions>
                   </Card>
@@ -334,7 +346,7 @@ export default function Portfolio() {
               Cursos Complementarios
             </Typography>
             
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, width: '100%' }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, width: '100%' }}>
               {portfolioData.certifications.map((cert, index) => (
                 <Paper 
                   key={index} 
@@ -354,10 +366,10 @@ export default function Portfolio() {
                   }} 
                   elevation={0}
                 >
-                   <Box sx={{ color: 'secondary.main', mb: 1.5 }}>{cert.icon}</Box>
+                   <Box sx={{ color: 'primary.main', mb: 1.5 }}>{cert.icon}</Box>
                    <Typography variant="h6" fontWeight="bold">{cert.title}</Typography>
                    <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{cert.place}</Typography>
-                   <Chip label={cert.status} size="medium" color={cert.status.includes("En curso") ? "warning" : "success"} variant="outlined" sx={{ mt: 2 }} />
+                   <Chip label={cert.status} size="medium" color={cert.status.includes("Certificado") ? "primary" : "warning"} variant="outlined" sx={{ mt: 2 }} />
                    
                    {/* Texto solo si hay imagen */}
                    {cert.image && (
@@ -393,7 +405,42 @@ export default function Portfolio() {
             </DialogTitle>
             <DialogContent dividers>
               <Typography paragraph color="text.secondary" sx={{ mb: 4, fontSize: '1rem' }}>{selectedProject.desc}</Typography>
-              
+
+              {selectedProject.title === 'Medicina Integral' && (
+                <Box sx={{ mb: 3 }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Credenciales de prueba</Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.95rem', mb: 0.5 }}>
+                    Centro médico: <strong>22222222222</strong> — contraseña: <strong>123</strong>
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.95rem', mb: 1.5 }}>
+                    Médico: <strong>11111111111</strong> — contraseña: <strong>123</strong>
+                  </Typography>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Diferencias entre Centro médico y Médico</Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+                    Hay dos diferencias principales entre los roles:
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.95rem' }}>
+                    1) Cuando un <strong>Centro médico</strong> inicia sesión, puede acceder a las solicitudes tomadas por sus médicos y cambiar el estado de esas solicitudes.
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.95rem' }}>
+                    2) Un <strong>Médico</strong> solo puede ver y gestionar sus propias solicitudes; no puede cambiar el estado de solicitudes de otros médicos ni ver las listas completas del centro.
+                  </Typography>
+                </Box>
+              )}
+
+              {selectedProject.title === 'Bohemia Velas' && (
+                <Box sx={{ mb: 3 }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Credenciales de prueba</Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.95rem', mb: 1.5 }}>
+                    Admin: <strong>admin@velas.com</strong> — contraseña: <strong>123456</strong>
+                  </Typography>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Acciones de administrador</Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.95rem' }}>
+                    Al iniciar sesión como administrador se habilita un botón en el panel donde se pueden <strong>agregar</strong>, <strong>editar</strong> y <strong>borrar</strong> productos de la tienda.
+                  </Typography>
+                </Box>
+              )}
+
               <Grid container spacing={3} justifyContent="center">
                 {[selectedProject.cover, ...selectedProject.gallery].map((img, idx) => (
                   <Grid item xs={12} sm={6} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
