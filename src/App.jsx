@@ -120,6 +120,7 @@ export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [openCertModal, setOpenCertModal] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
+  const [openDegreeModal, setOpenDegreeModal] = useState(false);
 
   const theme = useMemo(() => createTheme({
     palette: {
@@ -168,6 +169,8 @@ export default function Portfolio() {
       setOpenCertModal(true);
     }
   };
+
+  const handleOpenDegree = () => setOpenDegreeModal(true);
 
   return (
     <ThemeProvider theme={theme}>
@@ -334,16 +337,24 @@ export default function Portfolio() {
           <Box sx={{ maxWidth: '900px', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
             
             {/* TÍTULO UNIVERSITARIO */}
-            <Paper sx={{ 
-              p: 2.5, borderRadius: 6, textAlign: 'center', width: '100%', maxWidth: '550px', mx: 'auto',
-              bgcolor: mode === 'light' ? '#f3e5f5' : '#2c1a35', 
-              border: `1px solid ${theme.palette.primary.main}`, 
-              transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.01)' }
-            }} elevation={2}>
+            <Paper 
+              onClick={handleOpenDegree}
+              sx={{ 
+                p: 2.5, borderRadius: 6, textAlign: 'center', width: '100%', maxWidth: '550px', mx: 'auto',
+                bgcolor: mode === 'light' ? '#f3e5f5' : '#2c1a35', 
+                border: `1px solid ${theme.palette.primary.main}`, 
+                cursor: 'pointer',
+                transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.01)' }
+              }} 
+              elevation={2}
+            >
                  <Box sx={{ color: 'primary.main', mb: 2 }}>{portfolioData.degrees[0].icon}</Box>
                  <Typography variant="h5" fontWeight="bold" gutterBottom>{portfolioData.degrees[0].title}</Typography>
                  <Typography variant="body1" color="text.secondary">{portfolioData.degrees[0].place}</Typography>
                  <Typography variant="body1" sx={{ mt: 1, fontWeight: 'bold' }}>{portfolioData.degrees[0].year}</Typography>
+                 <Typography variant="caption" sx={{ mt: 2, opacity: 0.6, fontSize: '0.8rem' }}>
+                   (Ver promedio académico)
+                 </Typography>
             </Paper>
 
             {/* CURSOS Y CERTIFICACIONES */}
@@ -482,6 +493,23 @@ export default function Portfolio() {
             </DialogContent>
           </>
         )}
+      </Dialog>
+
+      {/* MODAL PARA PROMEDIO ACADÉMICO */}
+      <Dialog open={openDegreeModal} onClose={() => setOpenDegreeModal(false)} maxWidth="md" fullWidth>
+        <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            Promedio Académico
+          </Typography>
+          <IconButton onClick={() => setOpenDegreeModal(false)}><Close /></IconButton>
+        </DialogTitle>
+        <DialogContent dividers sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
+          <img 
+            src="/promedio-academico.png" 
+            alt="Promedio Académico" 
+            style={{ maxWidth: '100%', maxHeight: '80vh', borderRadius: 8, boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }} 
+          />
+        </DialogContent>
       </Dialog>
 
     </ThemeProvider>
