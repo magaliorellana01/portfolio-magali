@@ -66,9 +66,10 @@ const portfolioData = {
     {
       title: "Curso de React",
       place: "Talento Tech",
-      status: "En curso / Certif. en trámite",
+      status: "Certificado",
       year: "2025",
-      icon: <Class fontSize="medium" />
+      icon: <WorkspacePremium fontSize="medium" />,
+      image: "/certificado-react.png"
     }
   ],
   projects: [
@@ -485,11 +486,19 @@ export default function Portfolio() {
               <IconButton onClick={() => setOpenCertModal(false)}><Close /></IconButton>
             </DialogTitle>
             <DialogContent dividers sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
-              <img 
-                src={selectedCert.image} 
-                alt="Certificado" 
-                style={{ maxWidth: '100%', maxHeight: '80vh', borderRadius: 8, boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }} 
-              />
+              {selectedCert.image.endsWith('.pdf') ? (
+                <iframe 
+                  src={selectedCert.image} 
+                  style={{ width: '100%', height: '80vh', border: 'none', borderRadius: 8, boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }} 
+                  title="Certificado PDF"
+                />
+              ) : (
+                <img 
+                  src={selectedCert.image} 
+                  alt="Certificado" 
+                  style={{ maxWidth: '100%', maxHeight: '80vh', borderRadius: 8, boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }} 
+                />
+              )}
             </DialogContent>
           </>
         )}
