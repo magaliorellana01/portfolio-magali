@@ -386,7 +386,7 @@ export default function Portfolio() {
                    <Box sx={{ color: 'primary.main', mb: 1.5 }}>{cert.icon}</Box>
                    <Typography variant="h6" fontWeight="bold">{cert.title}</Typography>
                    <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{cert.place}</Typography>
-                   <Chip label={cert.status} size="medium" color={cert.status.includes("Certificado") ? "primary" : "warning"} variant="outlined" sx={{ mt: 2 }} />
+                   <Chip label={cert.status} size="medium" color={cert.status.includes("Finalizado") ? "primary" : "warning"} variant="outlined" sx={{ mt: 2 }} />
                    
                    {/* Texto solo si hay imagen */}
                    {cert.image && (
