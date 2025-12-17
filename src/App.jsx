@@ -50,7 +50,7 @@ const portfolioData = {
     {
       title: "Desarrollo Web",
       place: "Coderhouse",
-      status: "Certificado",
+      status: "Finalizado",
       year: "2023",
       icon: <WorkspacePremium fontSize="medium" />,
       image: "/certificado-coder.png" 
@@ -58,7 +58,7 @@ const portfolioData = {
     {
       title: "Diseño Gráfico",
       place: "Loopian",
-      status: "Certificado",
+      status: "Finalizado",
       year: "2022",
       icon: <WorkspacePremium fontSize="medium" />,
       image: "/curso-loopian.png"
@@ -66,7 +66,7 @@ const portfolioData = {
     {
       title: "Curso de React",
       place: "Talento Tech",
-      status: "Certificado",
+      status: "Finalizado",
       year: "2025",
       icon: <WorkspacePremium fontSize="medium" />,
       image: "/certificado-react.png"
